@@ -1,0 +1,21 @@
+$title-decoration-height: 90px;
+$title-decoration-width: 70px;
+
+.title {
+  display: flex;
+  position: relative;
+
+  .title-decoration{
+    height: $title-decoration-height;
+    width: $title-decoration-width;
+  }
+
+  .title-text {
+    align-self: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: $text-big;
+    margin: 5px 52px;//too specific?
+    position: absolute;
+
+  }
+}
