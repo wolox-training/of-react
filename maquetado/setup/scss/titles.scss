@@ -1,20 +1,24 @@
 $title-decoration-height: 90px;
 $title-decoration-width: 70px;
 
-.title {
-  display: flex;
+h1 {
+  font-family: 'Roboto', sans-serif;
+  font-size: $text-big;
   position: relative;
 
-  .title-decoration{
+  //so its visible the decoration
+  top:$title-decoration-height;
+  left:$title-decoration-width;
+
+  &::before{
+    content: url("assets/triangle.svg");
+    display: inline-block;
     height: $title-decoration-height;
     width: $title-decoration-width;
+    position: absolute;
+    top:10 -$title-decoration-height/2;
+    left: 17 - $title-decoration-width;
+    z-index: -1;
   }
 
-  .title-text {
-    align-self: center;
-    font-family: 'Roboto', sans-serif;
-    font-size: $text-big;
-    margin: 5px 52px;//too specific?
-    position: absolute;
-  }
 }
