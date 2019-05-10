@@ -1,3 +1,8 @@
 @import 'equalizer';
-@import 'styles';
+@import 'colors';
+@import 'fonts';
 @import 'titles';
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
