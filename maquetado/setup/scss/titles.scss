@@ -7,11 +7,11 @@ $title-decoration-width: 70px;
   position: relative;
 
   &::before {
-    bottom: -25px;
     content: url("assets/triangle.svg");
     height: $title-decoration-height;
-    left: -50px;
     position: absolute;
+    right: calc(100% - 17px);
+    top: calc(100% - 63px);
     width: $title-decoration-width;
     z-index: -1;
   }
