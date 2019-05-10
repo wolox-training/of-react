@@ -1,6 +1,6 @@
 $tech-logo-size: 100px;
-$tech-container-margin: 50px;
-$tech-container-height: 300px;
+$tech-container-margin: 20px;
+$tech-container-height: 350px;
 $tech-container-width: 210px;
 
 .tech {
@@ -34,6 +34,7 @@ $tech-container-width: 210px;
 .tech-logo {
   margin: 12px;
   width: $tech-logo-size;
+  height: $tech-logo-size;
 }
 
 .tech-date,
