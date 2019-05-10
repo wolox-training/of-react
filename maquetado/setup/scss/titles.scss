@@ -3,16 +3,16 @@ $title-decoration-width: 70px;
 
 .title {
   font-size: $text-big;
-  margin: $title-decoration-height $title-decoration-width;
+  margin: 50px 55px;
   position: relative;
 
-  &::before{
-    content: url("assets/triangle.svg");
-    position: absolute;
-    height: $title-decoration-height;
-    width: $title-decoration-width;
+  &::before {
     bottom: -25px;
+    content: url("assets/triangle.svg");
+    height: $title-decoration-height;
     left: -50px;
+    position: absolute;
+    width: $title-decoration-width;
     z-index: -1;
   }
 }
