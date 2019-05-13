@@ -1,0 +1,29 @@
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  height: 180px;
+  justify-content: center;
+}
+
+.footer-copyright {
+  align-self: flex-end;
+  font-size: $text-small;
+  margin-right: 15px;
+}
+
+.footer-copyright,
+.footer-text
+{
+  color: $white;
+}
+
+.footer-logo {
+  margin-top:10px;
+}
+
+.footer-text {
+  font-size: $text-big;
+  margin: 4px;
+}
