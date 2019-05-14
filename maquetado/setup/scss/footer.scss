@@ -1,4 +1,4 @@
-$footer-height: 180px;
+$footer-height: 200px;
 
 .footer {
   align-items: center;
@@ -7,8 +7,9 @@ $footer-height: 180px;
   flex-direction: column;
   grid-area: footer;
   height: $footer-height;
-  justify-content: center;
+  justify-content: space-evenly;
   margin-top: 50px;
+  width: 100%;
 }
 
 .footer-copyright {
@@ -23,11 +24,16 @@ $footer-height: 180px;
   color: $white;
 }
 
-.footer-logo {
-  margin-top:10px;
-}
-
 .footer-text {
   font-size: $text-big;
   margin: 4px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .footer-copyright {
+    align-self: inherit;
+    font-size: $text-smaller;
+    margin-right: 0px;
+    margin-top: 25px;
+  }
 }

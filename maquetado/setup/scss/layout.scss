@@ -34,3 +34,27 @@
   grid-row:1 / span 2;
   height: 2*$tech-container-height;
 }
+
+@media only screen and (max-width: 1024px) {
+  .site {
+    grid-row-gap: 30px;
+    justify-items: center;
+  }
+
+  .tech-container {
+    grid-auto-flow: row;
+    grid-gap: 0px;
+    grid-template-columns: $tech-container-width;
+    margin-left: 0px;
+  }
+
+  .tech-container div:first-child {
+    border-right: inherit;
+    grid-row:1;
+    height: inherit;
+  }
+
+  .tech-container div:last-child {
+    border-bottom: hidden;
+  }
+}
