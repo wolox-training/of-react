@@ -1,9 +1,13 @@
-.techs-containers {
+.container {
+  margin: 150px 80px 0
+}
+
+.tech-area {
+  margin-top: 50px;
+}
+
+.tech-container {
   display: flex;
   flex-flow: row wrap;
   margin-left: 70px;
-}
-
-.title-techs {
-  margin: 50px;
 }
