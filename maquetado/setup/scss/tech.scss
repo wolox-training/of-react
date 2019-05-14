@@ -1,0 +1,49 @@
+$tech-logo-size: 100px;
+$tech-container-margin: 50px;
+$tech-container-height: 300px;
+$tech-container-width: 210px;
+
+.tech {
+  align-items: center;
+  background-color: $green;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  height: $tech-container-height;
+  margin: $tech-container-margin;
+  position: relative;
+  width: $tech-container-width;
+
+  &::before {
+    border: 1px solid $green;
+    border-radius: 5px;
+    bottom: 10px;
+    content: '';
+    height: $tech-container-height;
+    position: absolute;
+    right: 10px;
+    width: $tech-container-width;
+    z-index: -1;
+  }
+}
+
+.tech-title {
+  font-size: $text-medium;
+}
+
+.tech-logo {
+  margin: 12px;
+  width: $tech-logo-size;
+}
+
+.tech-date,
+.tech-text
+ {
+  font-size: $text-small;
+  margin: 10px 12px;
+  text-align: center;
+}
+
+.tech-date {
+  font-weight: bold;
+}
