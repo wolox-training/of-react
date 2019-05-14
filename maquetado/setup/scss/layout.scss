@@ -1,7 +1,19 @@
+@import 'navbar';
+@import 'footer';
+
 .content {
+  grid-area: content;
   margin-left: 80px;
-  margin-top: 150px;
-  margin-bottom: 100px;
+}
+
+.site {
+  display: grid;
+  grid-row-gap: 50px;
+  grid-template-areas:
+    "navbar"
+    "content"
+    "footer";
+  grid-template-rows: $navbar-height auto $footer-height;
 }
 
 .tech-area {
@@ -9,7 +21,16 @@
 }
 
 .tech-container {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: 70px;
+  align-items: center;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, $tech-container-width);
+  grid-template-rows: repeat(2, $tech-container-height);
+  margin-left: 200px;
+}
+
+.tech-container div:first-child {
+  border-right: solid $green 2px;
+  grid-row:1 / span 2;
+  height: 2*$tech-container-height;
 }
