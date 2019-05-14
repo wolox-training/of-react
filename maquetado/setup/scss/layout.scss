@@ -28,9 +28,3 @@
   grid-template-rows: repeat(2, $tech-container-height);
   margin-left: 200px;
 }
-
-.tech-container div:first-child {
-  border-right: solid $green 2px;
-  grid-row:1 / span 2;
-  height: 2*$tech-container-height;
-}

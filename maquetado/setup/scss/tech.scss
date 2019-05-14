@@ -11,6 +11,12 @@ $tech-container-width: 210px;
   height: $tech-container-height;
   position: relative;
   width: $tech-container-width;
+
+  &:first-child {
+    border-right: solid $green 2px;
+    grid-row: 1 / span 2;
+    height: 100%;
+  }
 }
 
 .tech-title {
