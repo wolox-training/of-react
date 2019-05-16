@@ -1,0 +1,44 @@
+@import 'navbar';
+@import 'footer';
+
+.container {
+  grid-area: content;
+  margin-left: 80px;
+}
+
+.site {
+  display: grid;
+  grid-row-gap: 50px;
+  grid-template-areas:
+    "navbar"
+    "content"
+    "footer";
+  grid-template-rows: $navbar-height auto $footer-height;
+}
+
+.tech-area {
+  margin-top: 50px;
+}
+
+.tech-container {
+  align-items: center;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, $tech-container-width);
+  grid-template-rows: repeat(2, $tech-container-height);
+  margin-left: 200px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .site {
+    grid-row-gap: 30px;
+    justify-items: center;
+  }
+
+  .tech-container {
+    grid-auto-flow: row;
+    grid-gap: 0px;
+    grid-template-columns: $tech-container-width;
+    margin-left: 0px;
+  }
+}
