@@ -6,11 +6,10 @@ $navbar-logo-height: 30px;
   background-color: $white;
   box-shadow: 5px 4px 10px $grey;
   display: flex;
+  grid-area: navbar;
   height: $navbar-height;
   justify-content: space-between;
   position: fixed;
-  right: 0px;
-  top: 0px;
   width: 100%;
   z-index: 1;
 }
