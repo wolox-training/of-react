@@ -1,0 +1,33 @@
+$footer-height: 180px;
+
+.footer {
+  align-items: center;
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  grid-area: footer;
+  height: $footer-height;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.footer-copyright {
+  align-self: flex-end;
+  font-size: $text-small;
+  margin: 15px;
+}
+
+.footer-copyright,
+.footer-text
+{
+  color: $white;
+}
+
+.footer-logo {
+  margin-top:10px;
+}
+
+.footer-text {
+  font-size: $text-big;
+  margin: 4px;
+}

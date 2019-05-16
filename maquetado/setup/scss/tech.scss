@@ -1,29 +1,21 @@
 $tech-logo-size: 100px;
-$tech-container-margin: 50px;
-$tech-container-height: 300px;
+$tech-container-margin: 20px;
+$tech-container-height: 350px;
 $tech-container-width: 210px;
 
 .tech {
   align-items: center;
-  background-color: $green;
-  border-radius: 5px;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   height: $tech-container-height;
-  margin: $tech-container-margin;
   position: relative;
   width: $tech-container-width;
 
-  &::before {
-    border: 1px solid $green;
-    border-radius: 5px;
-    bottom: 10px;
-    content: '';
-    height: $tech-container-height;
-    position: absolute;
-    right: 10px;
-    width: $tech-container-width;
-    z-index: -1;
+  &:first-child {
+    border-right: solid $green 2px;
+    grid-row: 1 / span 2;
+    height: 100%;
   }
 }
 
@@ -32,6 +24,7 @@ $tech-container-width: 210px;
 }
 
 .tech-logo {
+  height: $tech-logo-size;
   margin: 12px;
   width: $tech-logo-size;
 }
