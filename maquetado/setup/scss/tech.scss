@@ -11,6 +11,12 @@ $tech-container-width: 210px;
   height: $tech-container-height;
   position: relative;
   width: $tech-container-width;
+
+  &:first-child {
+    border-right: solid $green 2px;
+    grid-row:1 / span 2;
+    height: 100%;
+  }
 }
 
 .tech-title {
@@ -38,5 +44,15 @@ $tech-container-width: 210px;
 @media only screen and (max-width: 1024px) {
   .tech {
     border-bottom: 2px solid $green;
+
+    &:first-child {
+      border-right: inherit;
+      grid-row:1;
+      height: inherit;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
