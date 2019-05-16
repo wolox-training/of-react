@@ -16,12 +16,12 @@ $navbar-logo-height: 30px;
 
 .navbar-logo {
   height: $navbar-logo-height;
-  margin-left: 15px;
+  margin: 15px;
 }
 
 .navbar-title {
   font-size: $text-big;
-  margin-right: 15px;
+  margin: 15px;
 }
 
 @media only screen and (max-width: 1024px) {
