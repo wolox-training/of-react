@@ -1,10 +1,14 @@
+$footer-height: 180px;
+
 .footer {
   align-items: center;
   background-color: $blue;
   display: flex;
   flex-direction: column;
-  height: 180px;
+  grid-area: footer;
+  height: $footer-height;
   justify-content: center;
+  margin-top: 50px;
 }
 
 .footer-copyright {
