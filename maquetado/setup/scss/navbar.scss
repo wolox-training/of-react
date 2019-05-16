@@ -23,3 +23,18 @@ $navbar-logo-height: 30px;
   font-size: $text-big;
   margin: 15px;
 }
+
+@media only screen and (max-width: 1024px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar-logo {
+    margin-left: 0px;
+  }
+
+  .navbar-title {
+    margin-right: 0px;
+    visibility: hidden;
+  }
+}
