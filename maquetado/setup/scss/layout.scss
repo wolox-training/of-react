@@ -1,9 +1,30 @@
-.techs-containers {
-  display: flex;
-  flex-flow: row wrap;
-  margin-left: 70px;
+@import 'navbar';
+@import 'footer';
+
+.container {
+  grid-area: content;
+  margin-left: 80px;
 }
 
-.title-techs {
-  margin: 50px;
+.site {
+  display: grid;
+  grid-row-gap: 50px;
+  grid-template-areas:
+    "navbar"
+    "content"
+    "footer";
+  grid-template-rows: $navbar-height auto $footer-height;
+}
+
+.tech-area {
+  margin-top: 50px;
+}
+
+.tech-container {
+  align-items: center;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, $tech-container-width);
+  grid-template-rows: repeat(2, $tech-container-height);
+  margin-left: 200px;
 }
