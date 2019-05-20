@@ -1,10 +1,13 @@
 import { isArray } from './utils';
 
-export function min(aPosibbleArray) {
-  if(isArray(aPosibbleArray)) {
-    return Math.min(...aPosibbleArray);
+export function min(param) {
+  if(arguments.length > 1){
+    param = Array.from(arguments);
   }
-  return Math.min(aPosibbleArray);
+  if(isArray(param)) {
+    return Math.min(...param);
+  }
+  return Math.min(param);
 }
 
 export function copy() {
