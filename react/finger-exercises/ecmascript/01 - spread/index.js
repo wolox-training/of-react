@@ -24,6 +24,9 @@ export function reverseMerge(arr1, arr2) {
   return arrResult;
 }
 
-export function filterAttribs() {
-
+export function filterAttribs(arg) {
+  const copyArg = copy(arg);
+  delete copyArg.a;
+  delete copyArg.b;
+  return copyArg;
 }
