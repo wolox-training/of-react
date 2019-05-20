@@ -23,7 +23,7 @@ describe('Spread operator', () => {
     expect(example).toEqual(copiedExample);
 
     example.c = 3;
-    console.log(copiedExample);
+
     expect(example).toEqual({ a: 1, b: 2, c: 3 });
     expect(copiedExample).toEqual({ a: 1, b: 2 });
   });

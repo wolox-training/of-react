@@ -1,17 +1,22 @@
 import { isArray } from './utils';
 
-export function min(param) {
-  if(arguments.length > 0){
-    if(arguments.length > 1){
-      param = Array.from(arguments);
+export function min(...args) {
+  if (args.length > 0) {
+    if (args.length > 1) {
+      return Math.min(...args);
     }
-    if(isArray(param)) {
-      return Math.min(...param);
+    if (isArray(args[0])) {
+      return Math.min(...args[0]);
     }
-    return Math.min(param);
+    return Math.min(args[0]);
   }
+  return undefined;
 }
 
 export function copy(param) {
-  return Object.assign(param.constructor(),param);
+  return Object.assign(param.constructor(), param);
+}
+
+export function reverseMerge() {
+
 }
