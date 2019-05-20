@@ -19,11 +19,11 @@ export function copy(param) {
 
 export function reverseMerge(arr1, arr2) {
   const arrResult = [];
-  for (var i = 0; i < arr2.length; i++) {
-    arrResult.push(arr2[i]);
-  }
-  for (var j = 0; j < arr1.length; j++) {
-    arrResult.push(arr1[j]);
-  }
+  arrResult.push(...arr2);
+  arrResult.push(...arr1);
   return arrResult;
+}
+
+export function filterAttribs() {
+
 }
