@@ -1,7 +1,9 @@
 import { isArray } from './utils';
 
 export function min(aPosibbleArray) {
-  isArray(aPosibbleArray);
+  if(isArray(aPosibbleArray)) {
+    return Math.min(...aPosibbleArray);
+  }
   return Math.min(aPosibbleArray);
 }
 
