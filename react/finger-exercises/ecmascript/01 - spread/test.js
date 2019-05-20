@@ -16,18 +16,18 @@ describe('Spread operator', () => {
   it('min returns undefined on no args', () => {
     expect(min()).toBe(undefined);
   });
-  xit('copy can copy objects', () => {
+  it('copy can copy objects', () => {
     const example = { a: 1, b: 2 };
     const copiedExample = copy(example);
 
     expect(example).toEqual(copiedExample);
 
     example.c = 3;
-
+    console.log(copiedExample);
     expect(example).toEqual({ a: 1, b: 2, c: 3 });
     expect(copiedExample).toEqual({ a: 1, b: 2 });
   });
-  xit('copy can copy arrays', () => {
+  it('copy can copy arrays', () => {
     const example = [];
     const copiedExample = copy(example);
 

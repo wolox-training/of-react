@@ -12,6 +12,6 @@ export function min(param) {
   }
 }
 
-export function copy() {
-
+export function copy(param) {
+  return Object.assign(param.constructor(),param);
 }
