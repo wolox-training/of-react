@@ -9,13 +9,16 @@ export function min(...args) {
   return undefined;
 }
 
-export const copy = param => Object.assign(param.constructor(), param);
+export function copy(param) {
+  if (isArray(param)) {
+    return [...param];
+  }
+  return { ...param };
+}
 
 export const reverseMerge = (arr1, arr2) => [...arr2, ...arr1];
 
 export function filterAttribs(arg) {
-  const copyArg = copy(arg);
-  delete copyArg.a;
-  delete copyArg.b;
+  const { a, b, ...copyArg } = arg;
   return copyArg;
 }
