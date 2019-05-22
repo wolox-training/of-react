@@ -1,6 +1,7 @@
 import { delay, asyncDelay } from '.';
 
 const TIME = 500;
+export default TIME;
 
 describe('Promises', () => {
   it('delay works well', () => delay(TIME)

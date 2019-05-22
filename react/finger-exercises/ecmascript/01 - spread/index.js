@@ -9,12 +9,7 @@ export function min(...args) {
   return undefined;
 }
 
-export function copy(param) {
-  if (isArray(param)) {
-    return [...param];
-  }
-  return { ...param };
-}
+export const copy = param => (isArray(param) ? [...param] : { ...param });
 
 export const reverseMerge = (arr1, arr2) => [...arr2, ...arr1];
 
