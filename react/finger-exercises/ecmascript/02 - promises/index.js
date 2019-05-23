@@ -1,5 +1,5 @@
 // Hint: use setInterval, create a new Promise and measure time with Date.now()
-import TIME from './test';
+import { TIME } from './test';
 
 export function delay(time) {
   return new Promise((resolve, reject) => {
