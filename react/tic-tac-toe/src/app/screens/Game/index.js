@@ -55,12 +55,7 @@ class Game extends Component {
       );
     });
 
-    let status;
-    if (winner) {
-      status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
-    }
+    let status = decideGameStatus(winner,this.state.xIsNext);
     return (
     <div className={styles.game}>
       <div className={styles.gameBoard}>
@@ -77,6 +72,17 @@ class Game extends Component {
   );
   }
 }
+
+function decideGameStatus(winner, xIsNext) {
+  let status;
+  if (winner) {
+    status = 'Winner: ' + winner;
+  } else {
+    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
+  }
+  return status;
+}
+  
 
 function calculateWinner(squares) {
   const lines = [

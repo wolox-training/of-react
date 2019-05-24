@@ -4,52 +4,53 @@ import Square from '../Square';
 
 import styles from './styles.module.scss';
 
-const Board = (props) => 
-    (
+function Board({squares,onClick}){ 
+    return (
       <div>
         <div className={styles.boardRow}>
           <Square
-          value={props.squares[0]}
-          onClick={() => props.onClick(0)}
+          value={squares[0]}
+          onClick={() => onClick(0)}
           />
           <Square
-          value={props.squares[1]}
-          onClick={() => props.onClick(1)}
+          value={squares[1]}
+          onClick={() => onClick(1)}
           />
           <Square
-          value={props.squares[2]}
-          onClick={() => props.onClick(2)}
-          />
-        </div>
-        <div className={styles.boardRow}>
-          <Square
-          value={props.squares[3]}
-          onClick={() => props.onClick(3)}
-          />
-          <Square
-          value={props.squares[4]}
-          onClick={() => props.onClick(4)}
-          />
-          <Square
-          value={props.squares[5]}
-          onClick={() => props.onClick(5)}
+          value={squares[2]}
+          onClick={() => onClick(2)}
           />
         </div>
         <div className={styles.boardRow}>
           <Square
-          value={props.squares[6]}
-          onClick={() => props.onClick(6)}
+          value={squares[3]}
+          onClick={() => onClick(3)}
           />
           <Square
-          value={props.squares[7]}
-          onClick={() => props.onClick(7)}
+          value={squares[4]}
+          onClick={() => onClick(4)}
           />
           <Square
-          value={props.squares[8]}
-          onClick={() => props.onClick(8)}
+          value={squares[5]}
+          onClick={() => onClick(5)}
+          />
+        </div>
+        <div className={styles.boardRow}>
+          <Square
+          value={squares[6]}
+          onClick={() => onClick(6)}
+          />
+          <Square
+          value={squares[7]}
+          onClick={() => onClick(7)}
+          />
+          <Square
+          value={squares[8]}
+          onClick={() => onClick(8)}
           />
         </div>
       </div>
   );
+}
 
 export default Board;
