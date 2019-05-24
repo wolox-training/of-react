@@ -14,7 +14,7 @@ const Board = (props) =>
           />
           <Square
           value={props.squares[1]}
-          onClick={() => props.onClick()}
+          onClick={() => props.onClick(1)}
           />
           <Square
           value={props.squares[2]}
