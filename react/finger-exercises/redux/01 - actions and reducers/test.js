@@ -15,7 +15,7 @@ describe('Actions', () => {
     expect(store.getState().books.favoriteBook).toEqual('The Metamorphosis');
   });
 
-  xit('adds a book', () => {
+  it('adds a book', () => {
     /*
     Look at the actionCreators object in actions.js
     It knows how to dispatch an action with type actions.ADD_READ_BOOK.
@@ -27,7 +27,7 @@ describe('Actions', () => {
     expect(store.getState().books.readBooks).toEqual(['Moby Dick', 'The Lord of the Rings']);
   });
 
-  xit('set most hated book', () => {
+  it('set most hated book', () => {
     /*
     You don't have an action or reducer to do this. You need to add them.
     And don't forget to add the property to initialState!
