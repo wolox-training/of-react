@@ -3,6 +3,8 @@ import store from '@redux/store';
 import Navbar from '@components/Navbar';
 import Footer from '@components/Footer';
 
+import actionsCreators from '../../../redux/book/actions';
+
 import Book from './components/Book';
 import Search from './components/Search';
 import ShoppingCart from './components/ShoppingCart';
@@ -11,19 +13,22 @@ import styles from './styles.scss';
 class App extends Component {
   state = {
     books: [],
-    bookSelected: []
+    bookSelected: [],
+    search: null
   };
 
   componentDidMount() {
     store.subscribe(() => {
-      const { books, bookSelected } = store.getState();
-      this.setState({ books, bookSelected });
+      const { books, bookSelected, search } = store.getState();
+      this.setState({ books, bookSelected, search });
     });
-    // TODO to implement the dispatch
+    store.dispatch(actionsCreators.getBooks());
   }
 
   // TODO to implement the dispatch
-  onSearch = value => {};
+  onSearch = value => {
+    store.dispatch(actionsCreators.searchBook(value));
+  };
 
   // TODO to implement the dispatch
   addToCart = item => {};
@@ -59,7 +64,13 @@ class App extends Component {
         <div className={styles.container}>
           <Search onSearch={this.onSearch} />
           {this.state.books.length ? (
-            this.state.books.map(this.renderBooks)
+            this.state.search ? (
+              this.state.books
+                .filter(item => item.name.toLowerCase().includes(this.state.search))
+                .map(this.renderBooks)
+            ) : (
+              this.state.books.map(this.renderBooks)
+            )
           ) : (
             <div className={styles.noData}>
               <h2 className={styles.title}>No Data</h2>
