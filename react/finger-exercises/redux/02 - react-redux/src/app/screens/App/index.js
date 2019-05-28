@@ -25,13 +25,13 @@ class App extends Component {
     store.dispatch(actionsCreators.getBooks());
   }
 
-  // TODO to implement the dispatch
   onSearch = value => {
     store.dispatch(actionsCreators.searchBook(value));
   };
 
-  // TODO to implement the dispatch
-  addToCart = item => {};
+  addToCart = item => {
+    store.dispatch(actionsCreators.addToCart(item));
+  };
 
   // TODO to implement the dispatch
   addItem = itemId => {};
