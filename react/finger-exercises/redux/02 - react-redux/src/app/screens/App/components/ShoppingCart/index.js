@@ -3,6 +3,9 @@ import { arrayOf, func } from 'prop-types';
 import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
 
+import store from '../../../../../redux/store';
+import actionsCreators from '../../../../../redux/shopping-cart/actions';
+
 import Item from './components/Item';
 import styles from './styles.scss';
 
@@ -11,10 +14,15 @@ class ShoppingCart extends PureComponent {
     open: false
   };
 
+  componentDidMount() {
+    store.subscribe(() => {
+      const { open } = store.getState().shoppingCart;
+      this.setState({ open });
+    });
+  }
+
   toggleContent = () => {
-    this.setState(prevState => ({
-      open: !prevState.open
-    }));
+    store.dispatch(actionsCreators.toggleContent());
   };
 
   total = (accumulator, currentValue) => accumulator + currentValue.quantity;

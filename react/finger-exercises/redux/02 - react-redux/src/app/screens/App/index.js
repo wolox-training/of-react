@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     store.subscribe(() => {
-      const { books, bookSelected, search } = store.getState();
+      const { books, bookSelected, search } = store.getState().books;
       this.setState({ books, bookSelected, search });
     });
     store.dispatch(actionsCreators.getBooks());
