@@ -19,12 +19,23 @@ function reducer(state = initialState, action) {
         ...state,
         bookSelected: [...state.bookSelected, action.payload]
       };
-    case actions.ADD_ITEM: // TODO to implement the logic
-      return { ...state };
-    case actions.REMOVE_ITEM: // TODO to implement the logic
+    case actions.ADD_ITEM:
       return {
         ...state,
-        bookSelected: state.bookSelected.filter(item => item.id !== action.payload)
+        bookSelected: [
+          ...state.bookSelected.map(item =>
+            item.id === action.payload ? { ...item, quantity: item.quantity + 1 } : item
+          )
+        ]
+      };
+    case actions.REMOVE_ITEM:
+      return {
+        ...state,
+        bookSelected: [
+          ...state.bookSelected
+            .map(item => (item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item))
+            .filter(item => item.quantity !== 0)
+        ]
       };
     case actions.SEARCH_ITEM:
       return {

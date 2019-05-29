@@ -33,8 +33,9 @@ class App extends Component {
     store.dispatch(actionsCreators.addToCart(item));
   };
 
-  // TODO to implement the dispatch
-  addItem = itemId => {};
+  addItem = itemId => {
+    store.dispatch(actionsCreators.addItem(itemId));
+  };
 
   removeItem = itemId => {
     store.dispatch(actionsCreators.removeItem(itemId));
