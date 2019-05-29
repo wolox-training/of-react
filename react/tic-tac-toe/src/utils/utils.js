@@ -11,13 +11,9 @@ const lines = [
 ];
 
 
-export function decideGameStatus(winner, xIsNext) {
-    return winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
-}
-  
-  
-  export function calculateWinner(squares) {
-    
+export const decideGameStatus = (winner, xIsNext) => winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+
+export function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) return squares[a];
