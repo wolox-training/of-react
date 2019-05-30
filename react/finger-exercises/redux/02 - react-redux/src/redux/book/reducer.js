@@ -4,7 +4,7 @@ const initialState = {
   books: [],
   bookSelected: [],
   originalData: [],
-  search: null
+  bookSearch: null
 };
 
 function reducer(state = initialState, action) {
@@ -40,7 +40,7 @@ function reducer(state = initialState, action) {
     case actions.SEARCH_ITEM:
       return {
         ...state,
-        search: action.payload
+        bookSearch: action.payload
       };
     default:
       return state;
