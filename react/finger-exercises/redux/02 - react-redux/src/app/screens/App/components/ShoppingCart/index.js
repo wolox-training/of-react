@@ -15,17 +15,21 @@ class ShoppingCart extends PureComponent {
   };
 
   componentDidMount() {
-    store.subscribe(() => {
+    this.unsubscribe = store.subscribe(() => {
       const { open } = store.getState().shoppingCart;
       this.setState({ open });
     });
   }
 
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  total = (accumulator, currentValue) => accumulator + currentValue.quantity;
+
   toggleContent = () => {
     store.dispatch(actionsCreators.toggleContent());
   };
-
-  total = (accumulator, currentValue) => accumulator + currentValue.quantity;
 
   renderItem = item => {
     const { addItem, removeItem } = this.props;
