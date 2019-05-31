@@ -12,9 +12,7 @@ import styles from './styles.scss';
 class ShoppingCart extends PureComponent {
   total = (accumulator, currentValue) => accumulator + currentValue.quantity;
 
-  toggleContent = () => {
-    this.props.toggleContent();
-  };
+  toggleContent = () => this.props.toggleContent();
 
   renderItem = item => {
     const { addItem, removeItem } = this.props;

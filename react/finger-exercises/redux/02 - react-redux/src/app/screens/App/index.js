@@ -16,13 +16,9 @@ class App extends Component {
     this.props.getBooks();
   }
 
-  onSearch = value => {
-    this.props.searchBook(value);
-  };
+  onSearch = value => this.props.searchBook(value);
 
-  addToCart = item => {
-    this.props.addToCart(item);
-  };
+  addToCart = item => this.props.addToCart(item);
 
   CONFIGURATION_BUTTON = {
     add: {
