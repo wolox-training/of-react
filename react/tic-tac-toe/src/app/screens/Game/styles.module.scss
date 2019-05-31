@@ -1,6 +1,7 @@
 .game {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
 }
 
 .game-info {
