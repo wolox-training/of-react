@@ -8,7 +8,6 @@ export const actions = {
 const actionsCreators = {
   getMatches: () => (async (dispatch) => {
     let matches = await getMatches();
-    console.log(matches);
     return dispatch(actionsCreators.loadMatches(matches.data ? matches.data : []));
   }),
   loadMatches: (matches) => ({
