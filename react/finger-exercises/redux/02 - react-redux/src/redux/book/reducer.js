@@ -32,9 +32,13 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         bookSelected: [
-          ...state.bookSelected
-            .map(item => (item.id === action.payload ? { ...item, quantity: item.quantity - 1 } : item))
-            .filter(item => item.quantity !== 0)
+          ...state.bookSelected.reduce((array, item) => {
+            if (item.id === action.payload) {
+              item = { ...item, quantity: item.quantity - 1 };
+              if (item.quantity === 0) return [...array];
+            }
+            return [...array, item];
+          }, [])
         ]
       };
     case actions.SEARCH_ITEM:
