@@ -3,12 +3,14 @@ import LoginForm from '../Login/components/LoginForm';
 
 class Login extends Component {
   submit = values => {
-    //window.alert(JSON.stringify(values, null, 4));
+    //should verified email and password
+    this.props.history.push("/game");
   };
 
   getInitialValues() {
     return {
-      
+      email: '',
+      password: ''
     };
   }
 
