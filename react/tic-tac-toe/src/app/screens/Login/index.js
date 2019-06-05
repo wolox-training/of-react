@@ -7,18 +7,10 @@ class Login extends Component {
     this.props.history.push("/game");
   };
 
-  getInitialValues() {
-    return {
-      email: '',
-      password: ''
-    };
-  }
-
   render() {
     return (
       <LoginForm
         onSubmit={this.submit}
-        initialValues={this.getInitialValues()}
       />
     );
   }

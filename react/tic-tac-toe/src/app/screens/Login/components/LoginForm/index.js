@@ -1,51 +1,51 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import { customInput } from '../fields/index';
+import CustomInput from '../CustomInput';
 
-import styles from './styles.modules.scss';
+import styles from './styles.module.scss';
 
 import {
   required,
   minLength,
   matchesPassword,
   correctEmail
-} from '../../validation/index';
+} from '../../../../../utils/inputValidations';
 
-class LoginForm extends Component {
-  render() {
-    const { handleSubmit } = this.props;
-    return (
-      <form onSubmit={handleSubmit} className='form'>
-        <p className="title">Login</p>
+function LoginForm({ handleSubmit }) { 
+  return (
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <p className={styles.title}>Login</p>
         <Field
           name="email"
-          component={customInput}
+          component={CustomInput}
           type="text"
           label="Email"
-          validate={[correctEmail]}
+          validate={[required, correctEmail]}
         />
         <Field
           name="password"
-          component={customInput}
+          component={CustomInput}
           type="password"
           label="Password"
           validate={[required, minLength]}
         />
         <Field
           name="confirmPassword"
-          component={customInput}
+          component={CustomInput}
           type="password"
           label="Confirm Password"
           validate={[required, matchesPassword]}
         />
-        <button type="submit" className="login-button">Iniciar Sesión</button>
+        <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
       </form>
     );
   }
+
+LoginForm.defaultProps = {
+  initialValues: {
+    email: '',
+    password: ''
+  }
 }
 
-LoginForm = reduxForm({
-  form: 'login',
-})(LoginForm);
-
-export default LoginForm;
+export default reduxForm({ form: 'login' })(LoginForm);

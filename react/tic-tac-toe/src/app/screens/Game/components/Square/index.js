@@ -3,7 +3,6 @@ import React, { Component} from 'react';
 import PropTypes from "prop-types";
 
 import styles from './styles.module.scss';
-
 class Square extends Component {
 
   handleSquareClick = () => this.props.onClick(this.props.num);
@@ -19,8 +18,7 @@ class Square extends Component {
       </button>
     );
     }
-  }
-  
+}
 
 Square.propTypes = {
   value: PropTypes.string.isRequired,

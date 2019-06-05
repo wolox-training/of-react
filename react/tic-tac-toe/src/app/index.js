@@ -5,15 +5,8 @@ import Login from './screens/Login';
 
 import '../scss/application.scss';
 
-
 class App extends Component{
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAuthenticated: false,
-    }
-  }
+  state = { isAuthenticated: false };
 
   userHasAuthenticated = authenticated => {
     this.setState({ isAuthenticated: authenticated });
