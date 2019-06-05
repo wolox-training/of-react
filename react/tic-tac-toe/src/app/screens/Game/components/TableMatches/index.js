@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { arrayOf } from 'prop-types';
 
 import actionsCreators from '../../../../../redux/table-matches/actions';
-
+import Match from '../Match';
 import styles from './styles.module.scss';
 import Spinner from 'react-spinkit';
 
@@ -12,15 +12,7 @@ class TableMatches extends Component {
     this.props.getMatches();
   }
 
-  renderMatch(match) {
-    return (
-      <tr>
-        <td className={styles.tableChild}>{match.player_one}</td>
-        <td className={styles.tableChild}>{match.player_two}</td>
-        <td className={styles.tableChild}>{match.winner === 'player_one' ? match.player_one : match.winner === 'player_two' ? match.player_two : match.winner}</td> 
-      </tr>
-    );
-  }
+  renderMatch = (info) => (<Match match={info} key={info.id} />);
 
   render () {
     const { matches } = this.props;
@@ -28,12 +20,14 @@ class TableMatches extends Component {
     (<div className={styles.matches}>
         <div>Historial de Partidas:</div>
         <table className={styles.tableMatches}>
-          <tr>
-            <th className={styles.tableChild}>Player One</th>
-            <th className={styles.tableChild}>Player Two</th>
-            <th className={styles.tableChild}>Winner</th> 
-          </tr>
-          {this.props.matches.map(this.renderMatch)}
+          <thead>
+            <tr>
+              <th className={styles.tableChild}>Player One</th>
+              <th className={styles.tableChild}>Player Two</th>
+              <th className={styles.tableChild}>Winner</th> 
+            </tr>
+          </thead>
+          <tbody>{this.props.matches.map(this.renderMatch)}</tbody>
         </table>
     </div>) : 
     (<div>

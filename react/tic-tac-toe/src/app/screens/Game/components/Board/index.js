@@ -65,7 +65,6 @@ function Board({squares,onClick}){
 }
 
 Square.propTypes = {
-  value: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClick: PropTypes.func.isRequired
 }
 

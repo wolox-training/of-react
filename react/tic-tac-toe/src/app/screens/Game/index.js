@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import styles from './styles.module.scss';
 
 import Board from './components/Board';
-import TableMatches from './components/Matches';
+import TableMatches from './components/TableMatches';
 
 import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
