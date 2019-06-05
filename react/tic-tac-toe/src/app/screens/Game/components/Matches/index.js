@@ -60,7 +60,7 @@ TableMatches.propTypes = {
 }
 
 const mapStateToProps = store => ({
-  matches: store.matches
+  matches: store.matches.matches
 });
 
 const mapDispatchToProps = dispatch => ({
