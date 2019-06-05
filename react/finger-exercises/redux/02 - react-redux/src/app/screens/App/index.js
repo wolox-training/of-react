@@ -16,10 +16,6 @@ class App extends Component {
     this.props.getBooks();
   }
 
-  onSearch = value => this.props.searchBook(value);
-
-  addToCart = item => this.props.addToCart(item);
-
   CONFIGURATION_BUTTON = {
     add: {
       text: 'Add to cart',
@@ -43,7 +39,7 @@ class App extends Component {
       <Fragment>
         <Navbar />
         <div className={styles.container}>
-          <Search onSearch={this.onSearch} />
+          <Search onSearch={value => this.props.searchBook(value)} />
           {this.props.books.length ? (
             this.props.bookSearch ? (
               this.props.books
