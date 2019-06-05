@@ -23,7 +23,7 @@ class Square extends Component {
   
 
 Square.propTypes = {
-  value: PropTypes.string.isRequired,
+  //value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 }
 

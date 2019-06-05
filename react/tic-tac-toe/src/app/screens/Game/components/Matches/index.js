@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-
-
 import { connect } from 'react-redux';
 import { arrayOf } from 'prop-types';
 
 import actionsCreators from '../../../../../redux/table-matches/actions';
 
 import styles from './styles.module.scss';
-
-var Spinner = require('react-spinkit');
+import Spinner from 'react-spinkit';
 
 class TableMatches extends Component {
   componentDidMount() {
@@ -25,33 +22,24 @@ class TableMatches extends Component {
     );
   }
 
-  renderLoading() {
-    return <Spinner className={styles.loading} name='double-bounce' />;
-  }
-
   render () {
-    if (this.props.matches.length) {
-      return (
-        <div className={styles.matches}>
-          <div>Historial de Partidas:</div>
-          <table className={styles.tableMatches}>
-            <tr>
-              <th className={styles.tableChild}>Player One</th>
-              <th className={styles.tableChild}>Player Two</th>
-              <th className={styles.tableChild}>Winner</th> 
-            </tr>
-            {this.props.matches.map(this.renderMatch)}
-          </table>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.matches}>
-          <div>Cargando Historial de Partidas... </div>  
-          {this.renderLoading()}
-        </div>
-        );
-    }
+    const { matches } = this.props;
+    return matches.length ? 
+    (<div className={styles.matches}>
+        <div>Historial de Partidas:</div>
+        <table className={styles.tableMatches}>
+          <tr>
+            <th className={styles.tableChild}>Player One</th>
+            <th className={styles.tableChild}>Player Two</th>
+            <th className={styles.tableChild}>Winner</th> 
+          </tr>
+          {this.props.matches.map(this.renderMatch)}
+        </table>
+    </div>) : 
+    (<div>
+      <div>Cargando Historial de Partidas... </div>  
+      <Spinner className={styles.loading} name='double-bounce' />
+    </div>);
   }
 }
 
