@@ -4,7 +4,8 @@ import { actions } from './actions';
 const initialState = {
   userAuthenticated: false,
   loading: false,
-  token: ''
+  token: '',
+  error: '',
 };
 
 function reducer(state = initialState, action) {
@@ -12,9 +13,9 @@ function reducer(state = initialState, action) {
     case actions.POST_USER:
       return state;
     case actions.POST_USER_SUCCESS:
-      return { token : action.payload.token , userAuthenticated: action.payload.userAuthenticated, loading: false}
-    case actions.GET_MATCHES_FAILURE:
-      return { userAuthenticated: action.payload.userAuthenticated, loading:false };
+      return { ...state, token : action.payload.token , userAuthenticated: action.payload.userAuthenticated, loading: false}
+    case actions.POST_USER_FAILURE:
+      return { ...state, userAuthenticated: action.payload.userAuthenticated, loading: false, error: action.payload.error };
     case actions.SET_LOADING:
       return { ...state, loading: action.payload.loading };
     default:

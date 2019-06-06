@@ -20,7 +20,7 @@ const actionsCreators = {
   }),
   postUserFailure: (problem) => ({
     type: actions.POST_USER_FAILURE,
-    payload: {problem, userAuthenticated: false }
+    payload: {userAuthenticated: false, error: problem}
   }),
   setLoading: (load) => ({
     type: actions.SET_LOADING,

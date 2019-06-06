@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import LoginForm from '../Login/components/LoginForm';
-//import { SubmissionError } from 'redux-form';
-
-import actionsCreators from '../../../redux/login/actions';
 
 class Login extends Component {
   submit = (values) => {
@@ -19,22 +15,11 @@ class Login extends Component {
         <LoginForm
           onSubmit={this.submit}
           isLoading={this.props.loading}
+          hasError={this.props.hasError ? true : false}
         />
       );
     }
   }
 }
 
-const mapStateToProps = store => ({
-  userAuthenticated: store.login.userAuthenticated,
-  loading: store.login.loading
-})
-
-const mapDispatchToProps = dispatch => ({
-  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password))
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Login);
+export default Login;

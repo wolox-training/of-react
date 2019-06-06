@@ -12,7 +12,7 @@ import {
   correctEmail
 } from '../../../../../utils/inputValidations';
 
-function LoginForm({ handleSubmit, isLoading }) { 
+function LoginForm({ handleSubmit, isLoading, hasError }) { 
   return (
       <form onSubmit={handleSubmit} className={styles.form}>
         <p className={styles.title}>Login</p>
@@ -38,7 +38,7 @@ function LoginForm({ handleSubmit, isLoading }) {
           validate={[required, matchesPassword]}
         />
         {!isLoading ? 
-        <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
+          <button type="submit" className={!hasError ? styles.loginButton : styles.loginError}>{!hasError ? 'Iniciar Sesión' : 'Error: Reintentar?'}</button>
          : 
         <div type="submit" className={styles.loading}>
           <Spinner name='circle' className={styles.loadingSpinner} />
