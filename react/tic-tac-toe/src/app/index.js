@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Game from './screens/Game';
 import Login from './screens/Login';
+import api from '../config/api';
 import PrivateRoute from './components/PrivateRoute';
 import { connect } from 'react-redux';
 import actionsCreators from '../redux/login/actions';
 import '../scss/application.scss';
 
 class App extends Component{
+  componentDidMount() {
+    var token = window.localStorage.getItem('token');
+    if (token) {
+      api.setHeader({Authorization: token});
+      this.props.setAuthenticated(true);
+    }
+  }
   render() {
     return (
     <BrowserRouter>
@@ -26,7 +34,8 @@ const mapStateToProps = store => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password))
+  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
+  setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
 })
 
 export default connect(
