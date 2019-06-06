@@ -7,6 +7,7 @@ export const actions = {
   POST_USER_FAILURE: '@@LOGIN/POST_USER_FAILURE',
   SET_LOADING: '@@LOGIN/SET_LOADING',
   SET_AUTHENTICATED: '@@LOGIN/SET_AUTHENTICATED',
+  SET_TOKEN: '@@LOGIN/SET_TOKEN'
 };
 
 const actionsCreators = {
@@ -35,6 +36,10 @@ const actionsCreators = {
   setAuthenticated: (boolean) => ({
     type: actions.SET_AUTHENTICATED,
     payload: boolean
+  }),
+  setToken: (token) => ({
+    type: actions.SET_TOKEN,
+    payload: token
   })
 };
 

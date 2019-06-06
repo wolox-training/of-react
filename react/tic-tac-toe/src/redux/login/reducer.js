@@ -20,6 +20,8 @@ function reducer(state = initialState, action) {
       return { ...state, loading: action.payload.loading };
     case actions.SET_AUTHENTICATED:
       return {...state, userAuthenticated: action.payload}
+    case actions.SET_TOKEN:
+      return {...state, token: action.payload}
     default:
       return state;
   }

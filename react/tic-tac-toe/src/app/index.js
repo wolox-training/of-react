@@ -14,6 +14,7 @@ class App extends Component{
     if (token) {
       api.setHeader({Authorization: token});
       this.props.setAuthenticated(true);
+      this.props.setToken(token)
     }
   }
   render() {
@@ -36,6 +37,7 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch => ({
   checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
   setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
+  setToken: (token) => dispatch(actionsCreators.setToken(token))
 })
 
 export default connect(
