@@ -9,14 +9,37 @@
     font-size: 20px;
 }
 
+.loading {
+    background-color: #00ADEE;
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.loading-spinner {
+    color: white;
+}
+
+.loading-text {
+    color: white;
+    font-size: 20px;
+}
+
 .form {
     max-width: 360px;
     padding: 30px;
     box-shadow: 5px 4px 10px grey;
     margin: auto;
     display: flex;
+    flex-wrap: nowrap;
     flex-direction: column;
-  
+    justify-content: center;
 }
 
 .title {
@@ -25,6 +48,3 @@
     font-size: 30px;
     margin-bottom: 15px;
 }
-
-
-

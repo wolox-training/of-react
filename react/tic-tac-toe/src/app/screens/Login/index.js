@@ -1,36 +1,33 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LoginForm from '../Login/components/LoginForm';
-import { SubmissionError } from 'redux-form';
+//import { SubmissionError } from 'redux-form';
 
 import actionsCreators from '../../../redux/login/actions';
 
 class Login extends Component {
-  submit = values => {
+  submit = (values) => {
     this.props.checkCredentials(values);
-    console.log(this.props.userAuthenticated);
-    if(!this.props.userAuthenticated) {
-      throw new SubmissionError({
-        email: 'Email o contraseña incorrectos',
-        password: 'Email o contraseña incorrectos'
-      })
-    }
-    else {
-      this.props.history.push("/game");
-    }
   };
 
   render() {
-    return (
-      <LoginForm
-        onSubmit={this.submit}
-      />
-    );
+    if (this.props.userAuthenticated && !this.props.loading) {
+      this.props.history.push("/game");
+      return null;
+    } else {
+      return (
+        <LoginForm
+          onSubmit={this.submit}
+          isLoading={this.props.loading}
+        />
+      );
+    }
   }
 }
 
 const mapStateToProps = store => ({
-  userAuthenticated: store.login.userAuthenticated
+  userAuthenticated: store.login.userAuthenticated,
+  loading: store.login.loading
 })
 
 const mapDispatchToProps = dispatch => ({

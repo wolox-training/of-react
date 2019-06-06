@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import CustomInput from '../CustomInput';
+import Spinner from 'react-spinkit';
 
 import styles from './styles.module.scss';
 
@@ -11,7 +12,7 @@ import {
   correctEmail
 } from '../../../../../utils/inputValidations';
 
-function LoginForm({ handleSubmit }) { 
+function LoginForm({ handleSubmit, isLoading }) { 
   return (
       <form onSubmit={handleSubmit} className={styles.form}>
         <p className={styles.title}>Login</p>
@@ -36,7 +37,13 @@ function LoginForm({ handleSubmit }) {
           label="Confirm Password"
           validate={[required, matchesPassword]}
         />
+        {!isLoading ? 
         <button type="submit" className={styles.loginButton}>Iniciar Sesión</button>
+         : 
+        <div type="submit" className={styles.loading}>
+          <Spinner name='circle' className={styles.loadingSpinner} />
+          <p className={styles.loadingText}>Cargando</p>
+        </div>}
       </form>
     );
   }
@@ -48,4 +55,4 @@ LoginForm.defaultProps = {
   }
 }
 
-export default reduxForm({ form: 'login' })(LoginForm);
+export default reduxForm({form: 'login'})(LoginForm);

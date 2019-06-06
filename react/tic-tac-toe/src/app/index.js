@@ -6,12 +6,6 @@ import Login from './screens/Login';
 import '../scss/application.scss';
 
 class App extends Component{
-  /*state = { isAuthenticated: false };
-
-  userHasAuthenticated = authenticated => {
-    this.setState({ isAuthenticated: authenticated });
-  }*/
-  
   render() {
     return (
     <Switch>
