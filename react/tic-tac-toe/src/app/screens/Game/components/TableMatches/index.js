@@ -12,7 +12,10 @@ class TableMatches extends Component {
     this.props.getMatches();
   }
 
-  renderMatch = (info) => (<Match match={info} key={info.id} />);
+  renderMatch = (info) => {
+    console.log(info);
+    return (<Match match={info} key={info.id} />)
+   } ;
 
   render () {
     const { matches } = this.props;
@@ -27,7 +30,7 @@ class TableMatches extends Component {
               <th className={styles.tableChild}>Winner</th> 
             </tr>
           </thead>
-          <tbody>{this.props.matches.map(this.renderMatch)}</tbody>
+          <tbody>{matches.map(this.renderMatch)}</tbody>
         </table>
     </div>) : 
     (<div>
