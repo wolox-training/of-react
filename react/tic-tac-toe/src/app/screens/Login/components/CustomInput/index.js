@@ -6,7 +6,7 @@ function CustomInput({ label, input, type, meta }) {
   return (
     <div className={styles.customInputContainer} >
       <label>{label}</label>
-      <input {...input} type={type}  className={styles.customInput + ' ' + inputClassName}  />
+      <input {...input} type={type}  className={`${styles.customInput} ${inputClassName}`}  />
       {(meta.error && meta.touched) && (<div className={styles.error}>{meta.error}</div>)}
     </div>
   );

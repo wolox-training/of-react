@@ -10,8 +10,6 @@ const initialState = {
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.POST_USER:
-      return state;
     case actions.POST_USER_SUCCESS:
       return { ...state, token : action.payload.token , userAuthenticated: action.payload.userAuthenticated, loading: false}
     case actions.POST_USER_FAILURE:

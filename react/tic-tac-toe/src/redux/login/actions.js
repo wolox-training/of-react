@@ -16,8 +16,8 @@ const actionsCreators = {
     const response = await postUser(email,password);
     if (response.ok) {
       window.localStorage.setItem('token', response.data.token);
-      api.setHeader({Authorization: response.data.token});
-      dispatch(actionsCreators.postUserSuccess(response.data));
+      api.setHeader('Authorization', response.data.token);
+      dispatch(actionsCreators.postUserSuccess(response.data.token));
     }
     else dispatch(actionsCreators.postUserFailure(response.problem));
   }),
