@@ -1,23 +1,18 @@
 import React, { PureComponent, Fragment } from 'react';
-import { arrayOf, func } from 'prop-types';
+import { connect } from 'react-redux';
+import { arrayOf, func, bool } from 'prop-types';
 import { bookSelectedPropType } from '@constants/propTypes';
 import Button from '@components/Button';
+
+import actionsCreators from '../../../../../redux/shopping-cart/actions';
 
 import Item from './components/Item';
 import styles from './styles.scss';
 
 class ShoppingCart extends PureComponent {
-  state = {
-    open: false
-  };
-
-  toggleContent = () => {
-    this.setState(prevState => ({
-      open: !prevState.open
-    }));
-  };
-
   total = (accumulator, currentValue) => accumulator + currentValue.quantity;
+
+  toggleContent = () => this.props.toggleContent();
 
   renderItem = item => {
     const { addItem, removeItem } = this.props;
@@ -31,7 +26,7 @@ class ShoppingCart extends PureComponent {
         <Button className={styles.buttonCart} onClick={this.toggleContent}>
           <i className="fa fa-shopping-cart" />
         </Button>
-        <div className={`${styles.container} ${this.state.open ? styles.open : ''}`}>
+        <div className={`${styles.container} ${this.props.open ? styles.open : ''}`}>
           <h1 className={styles.title}>Cart</h1>
           <ul className={styles.content}>{data.map(this.renderItem)}</ul>
           <h2 className={`${styles.title} ${styles.total}`}>Total: {data.reduce(this.total, 0)}</h2>
@@ -44,7 +39,20 @@ class ShoppingCart extends PureComponent {
 ShoppingCart.propTypes = {
   data: arrayOf(bookSelectedPropType).isRequired,
   addItem: func.isRequired,
-  removeItem: func.isRequired
+  removeItem: func.isRequired,
+  open: bool.isRequired,
+  toggleContent: func.isRequired
 };
 
-export default ShoppingCart;
+const mapStateToProps = store => ({
+  open: store.shoppingCart.open
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleContent: () => dispatch(actionsCreators.toggleContent())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ShoppingCart);

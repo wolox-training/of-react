@@ -1,16 +1,14 @@
 import { actions } from './actions';
 
 const initialState = {
-  email: null,
-  token: null
+  open: false
 };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case actions.LOG_IN:
+    case actions.TOOGLE_CONTENT:
       return {
-        email: action.payload.email,
-        token: action.payload.token
+        open: !state.open
       };
     default:
       return state;
