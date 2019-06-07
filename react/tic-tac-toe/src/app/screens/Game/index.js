@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import styles from './styles.module.scss';
 
 import Board from './components/Board';
-import TableMatches from './components/Matches';
+import Topbar from '../../components/Topbar';
 
 import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
@@ -55,19 +55,21 @@ class Game extends Component {
 
     let status = decideGameStatus(winner,this.state.xIsNext);
     return (
-    <div className={styles.game}>
-      <div className={styles.gameBoard}>
-        <Board
-          squares={current.squares}
-          onClick={(i) => this.handleClick(i)}
-         />
-      </div>
-      <div className={styles.gameInfo}>
-        <div>{status}</div>
-        <ol>{moves}</ol>
-      </div>
-      <TableMatches />
-    </div>
+      <>
+        <Topbar logout={this.props.logout} history={this.props.history} />
+        <div className={styles.game}>
+          <div className={styles.gameBoard}>
+            <Board
+              squares={current.squares}
+              onClick={(i) => this.handleClick(i)}
+            />
+          </div>
+          <div className={styles.gameInfo}>
+            <div>{status}</div>
+            <ol>{moves}</ol>
+          </div>
+        </div>
+      </>
   );
   }
 }

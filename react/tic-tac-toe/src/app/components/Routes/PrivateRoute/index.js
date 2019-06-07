@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-function PrivateRoute({ component: Component, isAuthenticated, ...rest }) {
+function PrivateRoute({ component: Component, isAuthenticated, logout, ...rest }) {
   return(
     <Route {...rest} render={(props) => (
       isAuthenticated 
-        ? <Component />
+        ? <Component {...props} logout={logout} />
         : <Redirect to={{
             pathname: "/login",
             state: { from: props.location }

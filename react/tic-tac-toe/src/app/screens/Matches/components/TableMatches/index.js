@@ -30,7 +30,6 @@ class TableMatches extends Component {
   }
 
   render () {
-    console.log(this.props.matches);
     if (this.props.matches.length) {
       return (
         <div className={styles.matches}>

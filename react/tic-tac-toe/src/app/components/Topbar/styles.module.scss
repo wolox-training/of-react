@@ -1,0 +1,24 @@
+.topbar {
+    align-items: center;
+    background-color: white;
+    box-shadow: 5px 4px 10px grey;
+    margin-bottom: 50px;
+    display: flex;
+    height: 50px;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 1;
+    color: black;
+    font-size: 30px;
+}
+
+.topbar-title {
+    align-self: center;
+    color: black;
+    font-size: 30px;
+}
+
+.topbar-item {
+    margin: 10px;
+    font-size: 20px;
+}

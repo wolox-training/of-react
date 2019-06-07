@@ -19,7 +19,9 @@ function reducer(state = initialState, action) {
     case actions.SET_AUTHENTICATED:
       return {...state, userAuthenticated: action.payload}
     case actions.SET_TOKEN:
-      return {...state, token: action.payload}
+      return {...state, token: action.payload};
+    case actions.LOGOUT:
+      return {...state, token: action.payload.token, userAuthenticated: action.payload.userAuthenticated};
     default:
       return state;
   }

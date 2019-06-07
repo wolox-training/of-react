@@ -7,7 +7,8 @@ export const actions = {
   POST_USER_FAILURE: '@@LOGIN/POST_USER_FAILURE',
   SET_LOADING: '@@LOGIN/SET_LOADING',
   SET_AUTHENTICATED: '@@LOGIN/SET_AUTHENTICATED',
-  SET_TOKEN: '@@LOGIN/SET_TOKEN'
+  SET_TOKEN: '@@LOGIN/SET_TOKEN',
+  LOGOUT: '@@LOGIN/LOGOUT'
 };
 
 const actionsCreators = {
@@ -40,7 +41,12 @@ const actionsCreators = {
   setToken: (token) => ({
     type: actions.SET_TOKEN,
     payload: token
-  })
+  }),
+  logout: () => {
+    delete api.headers['Authorization'];
+    window.localStorage.removeItem('token');
+    return { type: actions.LOGOUT, payload: { token: '', userAuthenticated: false}};
+  }
 };
 
 export default actionsCreators;
