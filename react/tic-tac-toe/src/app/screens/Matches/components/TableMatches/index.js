@@ -33,12 +33,12 @@ class TableMatches extends Component {
     if (this.props.matches.length) {
       return (
         <div className={styles.matches}>
-          <div>Historial de Partidas:</div>
+          <div className={styles.tableTitle}>Historial de Partidas:</div>
           <table className={styles.tableMatches}>
             <tr>
-              <th className={styles.tableChild}>Player One</th>
-              <th className={styles.tableChild}>Player Two</th>
-              <th className={styles.tableChild}>Winner</th> 
+              <th className={styles.tableHeader}>Player One</th>
+              <th className={styles.tableHeader}>Player Two</th>
+              <th className={styles.tableHeader}>Winner</th> 
             </tr>
             {this.props.matches.map(this.renderMatch)}
           </table>

@@ -8,9 +8,10 @@ class Square extends Component {
   handleSquareClick = () => this.props.onClick(this.props.num);
 
   render () {
+    const squareColor = this.props.value === 'X' ? styles.playerX : styles.playerO;
     return (
       <button 
-        className={styles.square} 
+        className={`${styles.square} ${squareColor}`} 
         onClick={this.handleSquareClick}
         type="button" 
       >

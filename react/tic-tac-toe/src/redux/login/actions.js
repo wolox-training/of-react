@@ -28,7 +28,7 @@ const actionsCreators = {
   }),
   postUserFailure: (problem) => ({
     type: actions.POST_USER_FAILURE,
-    payload: {userAuthenticated: false, error: problem}
+    payload: {userAuthenticated: false, errorMessage: problem}
   }),
   setLoading: (load) => ({
     type: actions.SET_LOADING,
@@ -45,7 +45,7 @@ const actionsCreators = {
   logout: () => {
     delete api.headers['Authorization'];
     window.localStorage.removeItem('token');
-    return { type: actions.LOGOUT, payload: { token: '', userAuthenticated: false}};
+    return { type: actions.LOGOUT, payload: { token: '', userAuthenticated: false, errorMessage:''}};
   }
 };
 

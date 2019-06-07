@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-
-//import styles from './styles.module.scss';
 import TableMatches from './components/TableMatches';
 import Topbar from '../../components/Topbar';
 
