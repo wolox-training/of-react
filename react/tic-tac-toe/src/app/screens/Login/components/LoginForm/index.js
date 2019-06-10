@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
-import CustomInput from '../CustomInput';
+import CustomInput from '../../../../components/CustomInput';
 import Spinner from 'react-spinkit';
 
 import styles from './styles.module.scss';

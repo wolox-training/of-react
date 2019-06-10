@@ -9,3 +9,21 @@
   margin-left: 50px;
   font-size: 24px;
 }
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.retry-button {
+  background-color: #00ADEE;
+  color: white;
+  width: 150px;
+  height: 50px;
+  align-self: center;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-size: 20px;
+}

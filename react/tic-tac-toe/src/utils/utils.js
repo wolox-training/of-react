@@ -1,4 +1,3 @@
-
 const lines = [
   [0, 1, 2],
   [3, 4, 5],
@@ -11,12 +10,22 @@ const lines = [
 ];
 
 
-export const decideGameStatus = (winner, xIsNext) => winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
+export const decideGameStatus = (winner, xIsNext, playerOne, playerTwo, tie) => (
+  winner ? `Ganador: ${winner==='X' ? playerOne: playerTwo}` : tie ? `Empate` : `Le toca a: ${xIsNext ? playerOne + ' X' : playerTwo + ' O'}`);
 
 export function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
-      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) return squares[a];
+      if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
+        return squares[a];
+      } 
     }
     return null;
+}
+
+export function allFill(squares) {
+  for(let i = 0; i < squares.length ; i++) {
+    if(!squares[i])return false;
+  }
+  return true;
 }

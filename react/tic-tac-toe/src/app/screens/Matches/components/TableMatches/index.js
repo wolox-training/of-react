@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { arrayOf } from 'prop-types';
 
-import actionsCreators from '../../../../../redux/table-matches/actions';
+import actionsCreators from '../../../../../redux/matches/actions';
 
 import styles from './styles.module.scss';
 
@@ -36,9 +36,9 @@ class TableMatches extends Component {
           <div className={styles.tableTitle}>Historial de Partidas:</div>
           <table className={styles.tableMatches}>
             <tr>
-              <th className={styles.tableHeader}>Player One</th>
-              <th className={styles.tableHeader}>Player Two</th>
-              <th className={styles.tableHeader}>Winner</th> 
+              <th className={styles.tableHeader}>Jugador Uno</th>
+              <th className={styles.tableHeader}>Jugador Dos</th>
+              <th className={styles.tableHeader}>Ganador</th> 
             </tr>
             {this.props.matches.map(this.renderMatch)}
           </table>
