@@ -9,7 +9,7 @@ import Board from './components/Board';
 import Topbar from '../../components/Topbar';
 import GameForm from './components/GameForm';
 
-import { calculateWinner, decideGameStatus, allFill } from '../../../utils/utils';
+import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
 class Game extends Component {
   state = {
@@ -32,7 +32,7 @@ class Game extends Component {
     if (this.state.winner || squares[i]) return;
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     const winner = calculateWinner(squares);
-    const tie = allFill(squares);
+    const tie = squares.every((square) => square!==null);
     this.setState({
       ...this.state,
       history: history.concat([{
