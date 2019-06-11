@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import styles from './styles.module.scss';
 
@@ -55,7 +55,7 @@ class Game extends Component {
 
     let status = decideGameStatus(winner,this.state.xIsNext);
     return (
-      <>
+      <Fragment>
         <Topbar logout={this.props.logout} history={this.props.history} />
         <div className={styles.game}>
           <div className={styles.gameBoard}>
@@ -69,7 +69,7 @@ class Game extends Component {
             <ol>{moves}</ol>
           </div>
         </div>
-      </>
+      </Fragment>
   );
   }
 }
