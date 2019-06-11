@@ -3,26 +3,24 @@ import React, { Component } from 'react';
 import styles from './styles.module.scss';
 
 import Board from './components/Board';
+import TableMatches from './components/TableMatches';
+
+import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [{
-        squares: Array(9).fill(null),
-      }],
-      stepNumber:0,
-      xIsNext: true,
-    };
-  }
+  state = {
+    history: [{
+      squares: Array(9).fill(null),
+    }],
+    stepNumber:0,
+    xIsNext: true,
+  };
 
   handleClick(i) {
-        const history = this.state.history.slice(0, this.state.stepNumber + 1);
+    const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
-      return;
-    }
+    if (calculateWinner(squares) || squares[i]) return;
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     this.setState({
       history: history.concat([{
@@ -46,9 +44,7 @@ class Game extends Component {
     const winner = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ?
-        'Go to move #' + move :
-        'Go to game start';
+      const desc = `Go to ${move ? `move ${move}` : 'game start' }`
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -69,40 +65,10 @@ class Game extends Component {
         <div>{status}</div>
         <ol>{moves}</ol>
       </div>
+      <TableMatches />
     </div>
   );
   }
-}
-
-function decideGameStatus(winner, xIsNext) {
-  let status;
-  if (winner) {
-    status = 'Winner: ' + winner;
-  } else {
-    status = 'Next player: ' + (xIsNext ? 'X' : 'O');
-  }
-  return status;
-}
-  
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
-  }
-  return null;
 }
 
 export default Game;

@@ -7,11 +7,17 @@ import './config/i18n';
 import './scss/application.scss';
 import { register } from './serviceWorker';
 
+import { Provider } from 'react-redux';
+
+import store from '../src/redux/store';
+
 const render = () => {
   ReactDOM.render(
+    <Provider store={store}>
     <AppContainer>
       <App />
-    </AppContainer>,
+    </AppContainer>
+    </Provider>,
     document.getElementById('root')
   );
 };
