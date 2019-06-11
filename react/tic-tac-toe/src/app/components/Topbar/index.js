@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styles from './styles.module.scss';
+import { connect } from 'react-redux';
+import actionsCreators from '../../../redux/login/actions';
 
 class Topbar extends Component {
     goToMatches = () => (this.props.history.push("/matches"));
@@ -17,4 +19,11 @@ class Topbar extends Component {
     }
 }
 
-export default Topbar;
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(actionsCreators.logout()),
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Topbar);

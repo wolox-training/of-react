@@ -25,8 +25,8 @@ class App extends Component{
       <BrowserRouter>
         <Switch>
           <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading} hasError={this.props.errorMessage==='' ? false : true} checkCredentials={this.props.checkCredentials} />
-          <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated} logout={this.props.logout} goToMatches={this.goToMatches} />
-          <PrivateRoute path="/matches" component={Matches} isAuthenticated={this.props.userAuthenticated} logout={this.props.logout} goToMatches={this.goToMatches}/>
+          <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches} />
+          <PrivateRoute path="/matches" component={Matches} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches}/>
         </Switch>
       </BrowserRouter>);
   };
@@ -42,7 +42,6 @@ const mapDispatchToProps = dispatch => ({
   checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
   setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
   setToken: (token) => dispatch(actionsCreators.setToken(token)),
-  logout: () => dispatch(actionsCreators.logout()),
 })
 
 export default connect(
