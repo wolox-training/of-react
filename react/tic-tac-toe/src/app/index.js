@@ -23,7 +23,7 @@ class App extends Component{
     return (
       <BrowserRouter>
         <Switch>
-          <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading} hasError={this.props.error} checkCredentials={this.props.checkCredentials} />
+          <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading} hasError={this.props.errorMessage ? true : false } />
           <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated}/>
         </Switch>
       </BrowserRouter>);
@@ -33,11 +33,10 @@ class App extends Component{
 const mapStateToProps = store => ({
   userAuthenticated: store.login.userAuthenticated,
   loading: store.login.loading,
-  error: store.login.error
+  errorMessage: store.login.error
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
   setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
   setToken: (token) => dispatch(actionsCreators.setToken(token))
 })
