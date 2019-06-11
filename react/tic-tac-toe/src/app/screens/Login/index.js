@@ -7,10 +7,6 @@ class Login extends Component {
   };
 
   render() {
-    if (this.props.userAuthenticated && !this.props.loading) {
-      this.props.history.push("/game");
-      return null;
-    } else {
       return (
         <LoginForm
           onSubmit={this.submit}
@@ -19,7 +15,7 @@ class Login extends Component {
         />
       );
     }
-  }
 }
+
 
 export default Login;
