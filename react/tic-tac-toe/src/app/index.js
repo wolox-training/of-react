@@ -9,6 +9,7 @@ import PublicRoute from './components/Routes/PublicRoute';
 import { connect } from 'react-redux';
 import actionsCreators from '../redux/login/actions';
 import '../scss/application.scss';
+import UsersService from '~services/UsersService';
 
 class App extends Component{
   componentDidMount() {
@@ -32,14 +33,20 @@ class App extends Component{
   };
 }
 
+App.defaultProps = {
+  token: '',
+  errorMessage: '',
+  loading: false
+};
+
 const mapStateToProps = store => ({
   userAuthenticated: store.login.userAuthenticated,
-  loading: store.login.loading,
-  errorMessage: store.login.errorMessage
+  loading: store.login.tokenLoading,
+  errorMessage: store.login.tokenError
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
+  checkCredentials: (creds) => dispatch(UsersService.postUser(creds)),
   setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
   setToken: (token) => dispatch(actionsCreators.setToken(token)),
   logout: () => dispatch(actionsCreators.logout()),

@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import actionsCreators from '../../../redux/matches/actions';
+import MatchesService from '../../../services/MatchesService';
 
 import styles from './styles.module.scss';
 
@@ -45,7 +45,7 @@ class Game extends Component {
     });
     if(winner || tie) {
       const theWinner = `${!winner ? 'tie' : winner ==='X' ? this.state.playerOne : this.state.playerTwo}`;
-      this.props.createMatch(
+      this.props.dispatch(MatchesService.createMatch(
         {
           player_one: this.state.playerOne,
           player_two: this.state.playerTwo,
@@ -53,7 +53,7 @@ class Game extends Component {
           createdAt: '',
           id: ''
         }
-      );
+      ));
     }
   }
 
@@ -90,7 +90,6 @@ class Game extends Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-
     const moves = history.map((step, move) => {
       const desc = `Ir a ${move ? `movimiento ${move}` : 'Inicio' }`
       return (
@@ -130,11 +129,5 @@ class Game extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createMatch: (match) => dispatch(actionsCreators.createMatch(match)),
-});
+export default connect()(Game);
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Game);

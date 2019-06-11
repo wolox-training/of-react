@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { arrayOf } from 'prop-types';
 
-import actionsCreators from '../../../../../redux/matches/actions';
+import MatchesService from '../../../../../services/MatchesService';
 
 import styles from './styles.module.scss';
 
@@ -12,7 +12,8 @@ var Spinner = require('react-spinkit');
 
 class TableMatches extends Component {
   componentDidMount() {
-    this.props.getMatches();
+    const { dispatch } = this.props;
+    dispatch(MatchesService.getMatches());
   }
 
   renderMatch(match) {
@@ -30,7 +31,8 @@ class TableMatches extends Component {
   }
 
   render () {
-    if (this.props.matches.length) {
+    const { matches } = this.props
+    if (matches.length) {
       return (
         <div className={styles.matches}>
           <div className={styles.tableTitle}>Historial de Partidas:</div>
@@ -40,7 +42,7 @@ class TableMatches extends Component {
               <th className={styles.tableHeader}>Jugador Dos</th>
               <th className={styles.tableHeader}>Ganador</th> 
             </tr>
-            {this.props.matches.map(this.renderMatch)}
+            {matches.map(this.renderMatch)}
           </table>
         </div>
       );
@@ -55,20 +57,16 @@ class TableMatches extends Component {
   }
 }
 
+TableMatches.defaultProps = {
+  matches: []
+};
+
 TableMatches.propTypes = {
-  matches: arrayOf(Object)
+  matches: arrayOf(Object),
 }
 
 const mapStateToProps = store => ({
-  matches: store.matches.matches
+  matches: store.matches.matches,
 });
 
-const mapDispatchToProps = dispatch => ({
-  getMatches: () => dispatch(actionsCreators.getMatches(dispatch)),
-  loadMatches: (matches) => dispatch(actionsCreators.loadMatches(matches))
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TableMatches);
+export default connect(mapStateToProps)(TableMatches);
