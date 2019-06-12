@@ -16,9 +16,15 @@
     align-self: center;
     color: black;
     font-size: 30px;
+    width: 250px;
 }
 
 .topbar-item {
     margin: 10px;
     font-size: 20px;
+}
+
+.right-topbar {
+    display: flex;
+    align-items: center;
 }

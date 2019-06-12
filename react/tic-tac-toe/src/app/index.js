@@ -9,6 +9,7 @@ import PublicRoute from './components/Routes/PublicRoute';
 import { connect } from 'react-redux';
 import actionsCreators from '../redux/login/actions';
 import '../scss/application.scss';
+import { withTranslation } from 'react-i18next';
 
 class App extends Component{
   componentDidMount() {
@@ -45,7 +46,7 @@ const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(actionsCreators.logout()),
 })
 
-export default connect(
+export default withTranslation()(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App));

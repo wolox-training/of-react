@@ -1,6 +1,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { t } from 'i18next';
+import { withTranslation } from 'react-i18next';
 import actionsCreators from '../../../redux/matches/actions';
 
 import styles from './styles.module.scss';
@@ -92,7 +94,7 @@ class Game extends Component {
     const current = history[this.state.stepNumber];
 
     const moves = history.map((step, move) => {
-      const desc = `Ir a ${move ? `movimiento ${move}` : 'Inicio' }`
+      const desc = move ? t('game.goToMoveMsg', {move: move}) : t('game.goToStartMsg');
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -116,7 +118,7 @@ class Game extends Component {
               squares={current.squares}
               onClick={(i) => this.handleClick(i)}
             />
-            <button onClick={this.retry} className={styles.retryButton}>Volver a jugar</button>
+            <button onClick={this.retry} className={styles.retryButton}>{t('game.playAgainMsg')}</button>
           </div>
           <div className={styles.gameInfo}>
             <div>{status}</div>
@@ -134,7 +136,7 @@ const mapDispatchToProps = dispatch => ({
   createMatch: (match) => dispatch(actionsCreators.createMatch(match)),
 });
 
-export default connect(
+export default withTranslation()(connect(
   null,
   mapDispatchToProps
-)(Game);
+)(Game));
