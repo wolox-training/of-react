@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import styles from './styles.module.scss';
 
 import Board from './components/Board';
+import TableMatches from './components/TableMatches';
 
 import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
@@ -64,6 +65,7 @@ class Game extends Component {
         <div>{status}</div>
         <ol>{moves}</ol>
       </div>
+      <TableMatches />
     </div>
   );
   }

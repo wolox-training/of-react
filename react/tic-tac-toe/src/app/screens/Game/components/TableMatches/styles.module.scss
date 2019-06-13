@@ -1,0 +1,18 @@
+@import 'src/scss/colors.scss';
+
+$table-matches-border: $dust-gray;
+
+.matches {
+    margin-left: 50px;
+}
+
+.table-matches {
+    border: 1px solid $table-matches-border;
+    text-align: left;
+    width: 500px;
+    margin-top: 5px;
+}
+
+.loading {
+    margin: 10px 0px 0px 80px;
+}
