@@ -4,15 +4,9 @@ import { connect } from 'react-redux';
 import actionsCreators from '../../../redux/login/actions';
 
 class Login extends Component {
-  submit = (values) => {
-    this.props.checkCredentials(values);
-  };
+  submit = (values) => this.props.checkCredentials(values);
 
   render() {
-    if (this.props.userAuthenticated && !this.props.loading) {
-      this.props.history.push("/game");
-      return null;
-    } else {
       return (
         <LoginForm
           onSubmit={this.submit}
@@ -21,11 +15,9 @@ class Login extends Component {
         />
       );
     }
-  }
 }
 
 const mapStateToProps = store => ({
-  userAuthenticated: store.login.userAuthenticated,
   loading: store.login.loading,
   errorMessage: store.login.errorMessage
 })

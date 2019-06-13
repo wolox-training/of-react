@@ -24,7 +24,7 @@ class App extends Component{
     return (
       <BrowserRouter>
         <Switch>
-          <PublicRoute path="/login" component={Login} />
+          <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading}/>
           <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches} />
           <PrivateRoute path="/matches" component={Matches} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches}/>
         </Switch>
@@ -34,6 +34,7 @@ class App extends Component{
 
 const mapStateToProps = store => ({
   userAuthenticated: store.login.userAuthenticated,
+  loading: store.login.loading,
 })
 
 const mapDispatchToProps = dispatch => ({
