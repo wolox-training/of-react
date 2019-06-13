@@ -11,7 +11,7 @@ class Login extends Component {
         <LoginForm
           onSubmit={this.submit}
           isLoading={this.props.loading}
-          hasError={this.props.errorMessage=== '' ? false: true}
+          hasError={!!this.props.errorMessage}
         />
       );
     }
