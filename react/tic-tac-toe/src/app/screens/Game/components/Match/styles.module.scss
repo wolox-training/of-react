@@ -1,0 +1,6 @@
+@import '../TableMatches/styles.module.scss';
+
+.table-child {
+    border: 1px solid $table-matches-border;
+    border-collapse: collapse;
+}

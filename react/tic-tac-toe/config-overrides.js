@@ -2,7 +2,6 @@
 
 const path = require('path');
 
-
 const createLoaderMatcher = loader => rule =>
   rule.loader && rule.loader.indexOf(`${path.sep}${loader}${path.sep}`) !== -1; //eslint-disable-line
 
