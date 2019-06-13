@@ -1,3 +1,5 @@
+import { t } from 'i18next';
+
 const lines = [
   [0, 1, 2],
   [3, 4, 5],
@@ -11,7 +13,9 @@ const lines = [
 
 
 export const decideGameStatus = (winner, xIsNext, playerOne, playerTwo, tie) => (
-  winner ? `Ganador: ${winner==='X' ? playerOne: playerTwo}` : tie ? `Empate` : `Le toca a: ${xIsNext ? playerOne + ' X' : playerTwo + ' O'}`);
+  winner ? t('game.winnerMsg', {winner:`${winner==='X' ? playerOne: playerTwo}`}) :
+  tie ? t('game.tieMsg') :
+  t('game.nextTurnMsg', {next: `${xIsNext ? playerOne + ' X' : playerTwo + ' O'}`}));
 
 export function calculateWinner(squares) {
     for (let i = 0; i < lines.length; i++) {
@@ -21,11 +25,4 @@ export function calculateWinner(squares) {
       } 
     }
     return null;
-}
-
-export function allFill(squares) {
-  for(let i = 0; i < squares.length ; i++) {
-    if(!squares[i])return false;
-  }
-  return true;
 }

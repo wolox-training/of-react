@@ -15,11 +15,11 @@ import store from '../src/redux/store';
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-    <AppContainer>
-      <Router>
-        <App />
-      </Router>
-    </AppContainer>
+      <AppContainer>
+        <Router>
+          <App />
+        </Router>
+      </AppContainer>
     </Provider>,
     document.getElementById('root')
   );

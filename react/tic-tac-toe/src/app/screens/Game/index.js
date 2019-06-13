@@ -1,15 +1,14 @@
-
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import MatchesService from '../../../services/MatchesService';
-
+import { t } from 'i18next';
+import { withTranslation } from 'react-i18next';
 import styles from './styles.module.scss';
-
 import Board from './components/Board';
 import Topbar from '../../components/Topbar';
 import GameForm from './components/GameForm';
 
-import { calculateWinner, decideGameStatus, allFill } from '../../../utils/utils';
+import { calculateWinner, decideGameStatus } from '../../../utils/utils';
 
 class Game extends Component {
   state = {
@@ -32,7 +31,7 @@ class Game extends Component {
     if (this.state.winner || squares[i]) return;
     squares[i] = this.state.xIsNext ? 'X' : 'O';
     const winner = calculateWinner(squares);
-    const tie = allFill(squares);
+    const tie = squares.every((square) => square!==null);
     this.setState({
       ...this.state,
       history: history.concat([{
@@ -91,7 +90,7 @@ class Game extends Component {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const moves = history.map((step, move) => {
-      const desc = `Ir a ${move ? `movimiento ${move}` : 'Inicio' }`
+      const desc = move ? t('game.goToMoveMsg', {move: move}) : t('game.goToStartMsg');
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
@@ -101,7 +100,7 @@ class Game extends Component {
 
     let status = decideGameStatus(this.state.winner,this.state.xIsNext, this.state.playerOne, this.state.playerTwo, this.state.tie);
     return (
-      <>
+      <Fragment>
         <Topbar logout={this.props.logout} history={this.props.history} />
          {!this.state.hasSubmited ? 
           <GameForm
@@ -110,24 +109,22 @@ class Game extends Component {
           />
           :
           <div className={styles.game}>
-          <div className={styles.gameBoard}>
-            <Board
-              squares={current.squares}
-              onClick={(i) => this.handleClick(i)}
-            />
-            <button onClick={this.retry} className={styles.retryButton}>Volver a jugar</button>
+            <div className={styles.gameBoard}>
+              <Board
+                squares={current.squares}
+                onClick={(i) => this.handleClick(i)}
+              />
+              <button onClick={this.retry} className={styles.retryButton}>{t('game.playAgainMsg')}</button>
+            </div>
+            <div className={styles.gameInfo}>
+              <div>{status}</div>
+              <ol>{moves}</ol>
+            </div>
           </div>
-          <div className={styles.gameInfo}>
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
-          
-          </div>
-         }
-      </>
-  );
+          }; 
+      </Fragment>
+    );
   }
 }
 
-export default connect()(Game);
-
+export default withTranslation()(connect()(Game));

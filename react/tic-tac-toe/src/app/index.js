@@ -9,7 +9,7 @@ import PublicRoute from './components/Routes/PublicRoute';
 import { connect } from 'react-redux';
 import actionsCreators from '../redux/login/actions';
 import '../scss/application.scss';
-import UsersService from '~services/UsersService';
+import { withTranslation } from 'react-i18next';
 
 class App extends Component{
   componentDidMount() {
@@ -25,9 +25,9 @@ class App extends Component{
     return (
       <BrowserRouter>
         <Switch>
-          <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading} hasError={this.props.errorMessage==='' ? false : true} checkCredentials={this.props.checkCredentials} />
-          <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated} logout={this.props.logout} goToMatches={this.goToMatches} />
-          <PrivateRoute path="/matches" component={Matches} isAuthenticated={this.props.userAuthenticated} logout={this.props.logout} goToMatches={this.goToMatches}/>
+          <PublicRoute path="/login" component={Login} userAuthenticated={this.props.userAuthenticated} loading={this.props.loading}/>
+          <PrivateRoute path="/game" component={Game} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches} />
+          <PrivateRoute path="/matches" component={Matches} isAuthenticated={this.props.userAuthenticated} goToMatches={this.goToMatches}/>
         </Switch>
       </BrowserRouter>);
   };
@@ -35,24 +35,20 @@ class App extends Component{
 
 App.defaultProps = {
   token: '',
-  errorMessage: '',
   loading: false
 };
 
 const mapStateToProps = store => ({
   userAuthenticated: store.login.userAuthenticated,
   loading: store.login.tokenLoading,
-  errorMessage: store.login.tokenError
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkCredentials: (creds) => dispatch(UsersService.postUser(creds)),
   setAuthenticated: (boolean) => dispatch(actionsCreators.setAuthenticated(boolean)),
   setToken: (token) => dispatch(actionsCreators.setToken(token)),
-  logout: () => dispatch(actionsCreators.logout()),
 })
 
-export default connect(
+export default withTranslation()(connect(
   mapStateToProps,
   mapDispatchToProps
-)(App);
+)(App));

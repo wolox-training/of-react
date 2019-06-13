@@ -59,3 +59,9 @@
     font-size: 30px;
     margin-bottom: 15px;
 }
+
+@media only screen and (max-width: 1024px) {
+    .form {
+        box-shadow: none;
+    }
+}
