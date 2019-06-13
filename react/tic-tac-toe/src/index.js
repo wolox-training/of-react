@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { BrowserRouter as Router } from "react-router-dom";
 
 import App from './app';
 import './config/i18n';
@@ -15,7 +16,9 @@ const render = () => {
   ReactDOM.render(
     <Provider store={store}>
     <AppContainer>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </AppContainer>
     </Provider>,
     document.getElementById('root')
