@@ -1,9 +1,9 @@
-
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { t } from 'i18next';
 import { withTranslation } from 'react-i18next';
 import actionsCreators from '../../../redux/matches/actions';
+
 
 import styles from './styles.module.scss';
 
@@ -104,7 +104,7 @@ class Game extends Component {
 
     let status = decideGameStatus(this.state.winner,this.state.xIsNext, this.state.playerOne, this.state.playerTwo, this.state.tie);
     return (
-      <>
+      <Fragment>
         <Topbar logout={this.props.logout} history={this.props.history} />
          {!this.state.hasSubmited ? 
           <GameForm
@@ -113,22 +113,21 @@ class Game extends Component {
           />
           :
           <div className={styles.game}>
-          <div className={styles.gameBoard}>
-            <Board
-              squares={current.squares}
-              onClick={(i) => this.handleClick(i)}
-            />
-            <button onClick={this.retry} className={styles.retryButton}>{t('game.playAgainMsg')}</button>
+            <div className={styles.gameBoard}>
+              <Board
+                squares={current.squares}
+                onClick={(i) => this.handleClick(i)}
+              />
+              <button onClick={this.retry} className={styles.retryButton}>{t('game.playAgainMsg')}</button>
+            </div>
+            <div className={styles.gameInfo}>
+              <div>{status}</div>
+              <ol>{moves}</ol>
+            </div>
           </div>
-          <div className={styles.gameInfo}>
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
-          
-          </div>
-         }
-      </>
-  );
+          }; 
+      </Fragment>
+    );
   }
 }
 

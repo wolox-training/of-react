@@ -43,7 +43,7 @@ const actionsCreators = {
     payload: token
   }),
   logout: () => {
-    delete api.headers['Authorization'];
+    api.deleteHeader('Authorization');
     window.localStorage.removeItem('token');
     return { type: actions.LOGOUT, payload: { token: '', userAuthenticated: false, errorMessage:''}};
   }

@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
 import TableMatches from './components/TableMatches';
 import Topbar from '../../components/Topbar';
 
-class Matches extends Component {
-  render() {
+function Matches({ logout, history }) {
     return (
-      <>
-        <Topbar logout={this.props.logout} history={this.props.history} />
+      <Fragment>
+        <Topbar logout={logout} history={history} />
         <TableMatches />
-      </>
+      </Fragment>
   );
-  }
 }
 
 export default Matches;

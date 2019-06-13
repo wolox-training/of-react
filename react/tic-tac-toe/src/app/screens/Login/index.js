@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import LoginForm from '../Login/components/LoginForm';
+import { connect } from 'react-redux';
+import actionsCreators from '../../../redux/login/actions';
 
 class Login extends Component {
-  submit = (values) => {
-    this.props.checkCredentials(values);
-  };
+  submit = (values) => this.props.checkCredentials(values);
 
   render() {
-    if (this.props.userAuthenticated && !this.props.loading) {
-      this.props.history.push("/game");
-      return null;
-    } else {
       return (
         <LoginForm
           onSubmit={this.submit}
           isLoading={this.props.loading}
-          hasError={this.props.hasError}
+          hasError={this.props.errorMessage=== '' ? false: true}
         />
       );
     }
-  }
 }
 
-export default Login;
+const mapStateToProps = store => ({
+  loading: store.login.loading,
+  errorMessage: store.login.errorMessage
+})
+
+const mapDispatchToProps = dispatch => ({
+  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

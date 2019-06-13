@@ -1,11 +1,16 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-function PublicRoute({ component: Component,loading, userAuthenticated, hasError, checkCredentials, ...rest }) {
+function PublicRoute({ component: Component, loading, userAuthenticated, ...rest }) {
   return(
-    <Route {...rest} render={(props) => ( 
-        <Component {...props} userAuthenticated={userAuthenticated} loading={loading} hasError={hasError} checkCredentials={checkCredentials}/>)}
-    />); 
+    <Route {...rest} render={(props) => (
+      (userAuthenticated && !loading)
+        ? <Redirect to={{
+            pathname: "/game",
+            state: { from: props.location }
+          }} />
+        : <Component {...props} />)}
+    />)
 }
 
 export default PublicRoute;
