@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import CustomInput from '../../../../components/CustomInput';
-import Spinner from 'react-spinkit';
+import Loading from '../../../../components/Loading';
 
 import styles from './styles.module.scss';
 
@@ -40,10 +40,7 @@ function LoginForm({ handleSubmit, isLoading, hasError }) {
         {!isLoading ? 
           <button type="submit" className={!hasError ? styles.loginButton : styles.loginError}>{!hasError ? 'Iniciar Sesión' : 'Error: Reintentar?'}</button>
          : 
-        <div type="submit" className={styles.loading}>
-          <Spinner name='circle' className={styles.loadingSpinner} />
-          <p className={styles.loadingText}>Cargando</p>
-        </div>}
+        <Loading type="button"/>}
       </form>
     );
   }
