@@ -18,7 +18,7 @@ class Login extends Component {
 }
 
 Login.defaultProps = {
-  loading: true,
+  loading: false,
   errorMessage: ''
 };
 
