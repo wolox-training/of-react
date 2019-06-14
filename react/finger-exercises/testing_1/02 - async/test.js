@@ -1,13 +1,21 @@
 import getData from '.';
 
 describe('02 - async', () => {
-  xit('getData resolves the data if true is sent as argument (use async/await)', async () => {
-    getData();
+  it('getData resolves the data if true is sent as argument (use async/await)', async () => {
+    const data = await getData(true);
+    expect(data).toBe('data');
   });
-  xit('getData resolves the data if true is sent as argument (avoid async/await)', () => {
+  it('getData resolves the data if true is sent as argument (avoid async/await)', () => {
+    expect(getData(true)).resolves.toBe('data');
   });
-  xit('getData throws error if false is sent as argument (use async/await)', async () => {
+  it('getData throws error if false is sent as argument (use async/await)', async () => {
+    try {
+      await getData(false);
+    } catch (e) {
+      expect(e.message).toMatch('error');
+    }
   });
-  xit('getData throws error if false is sent as argument (avoid async/await)', () => {
+  it('getData throws error if false is sent as argument (avoid async/await)', () => {
+    expect(getData(false)).rejects.toThrow('error');
   });
 });
