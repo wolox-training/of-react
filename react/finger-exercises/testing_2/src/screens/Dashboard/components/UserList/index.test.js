@@ -17,7 +17,7 @@ describe('UserList', () => {
     expect(wrapper.find('UserRow').props('user').user).toEqual(newUser);
   });
   it('setProps makes componentDidUpdate to be executed', () => {
-    jest.spyOn(UserList.prototype, 'componentDidUpdate')
+    jest.spyOn(UserList.prototype, 'componentDidUpdate');
     const users = [{ id: 1, name: 'Jane', active: true }]
     const wrapper = shallow(<UserList users={users} />);
     const newUser = { id: 2, name: 'Sean', active: true };
