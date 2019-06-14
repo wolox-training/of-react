@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import TableMatches from './components/TableMatches';
 import Topbar from '../../components/Topbar';
-import withLoading from '../../components/withLoading';
+import withLoading from '../../../utils/withLoading';
 
 import { connect } from 'react-redux';
 import { arrayOf } from 'prop-types';
@@ -22,7 +22,7 @@ class Matches extends Component {
     <Fragment>
       <Topbar logout={logout} history={history} />
       <div className={styles.matchesTitle}>Historial de Partidas:</div>
-      <WithLoadingTableMatches matches={this.props.matches} isLoading={this.props.isLoading} />
+      <WithLoadingTableMatches matches={this.props.matches} isLoading={this.props.isLoading} type="text" />
     </Fragment>
     );
   }
