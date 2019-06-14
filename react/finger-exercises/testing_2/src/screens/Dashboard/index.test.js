@@ -20,6 +20,6 @@ describe('Dashboard', () => {
   it('componentDidMount is called once', () => {
     jest.spyOn(Dashboard.prototype, 'componentDidMount')
     mount(<Dashboard />);
-    expect(Dashboard.prototype.componentDidMount.mock.calls.length).toBe(1)
+    expect(Dashboard.prototype.componentDidMount.mock.calls.length).toBe(1);
   })
 });
