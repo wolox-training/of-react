@@ -1,8 +1,5 @@
-
 import React, { Component, Fragment } from 'react';
-
 import styles from './styles.module.scss';
-
 import Board from './components/Board';
 import Topbar from '../../components/Topbar';
 
