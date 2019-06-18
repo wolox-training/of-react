@@ -1,0 +1,32 @@
+.matches {
+    align-self: center;
+}
+
+.table-matches {
+    border: 1px solid grey;
+    text-align: left;
+    width: 500px;
+    margin-top: 5px;
+}
+
+.table-child {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+.table-title {
+    font-size: 24px;
+}
+
+.table-header {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding-left: 5px;
+    font-size: 22px;
+}
+
+.loading {
+    margin: 10px 0px 0px 80px;
+}
