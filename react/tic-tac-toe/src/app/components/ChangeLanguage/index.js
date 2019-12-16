@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 class ChangeLanguage extends Component {
     state = {
-        selected: 'en',
+        selected: i18n.language,
     }
 
     spanishSelection = () => {

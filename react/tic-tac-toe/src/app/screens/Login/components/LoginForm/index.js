@@ -1,7 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import CustomInput from '../../../../components/CustomInput';
-import Spinner from 'react-spinkit';
+import withLoading from '../../../../../utils/withLoading';
+import LoginButton from '../LoginButton';
 
 import styles from './styles.module.scss';
 
@@ -13,6 +14,7 @@ import {
 } from '../../../../../utils/inputValidations';
 
 function LoginForm({ handleSubmit, isLoading, hasError }) { 
+  const WithLoadingLoginButton = withLoading(LoginButton);
   return (
       <form onSubmit={handleSubmit} className={styles.form}>
         <p className={styles.title}>Login</p>
@@ -37,13 +39,7 @@ function LoginForm({ handleSubmit, isLoading, hasError }) {
           label="Confirm Password"
           validate={[required, matchesPassword]}
         />
-        {!isLoading ? 
-          <button type="submit" className={!hasError ? styles.loginButton : styles.loginError}>{!hasError ? 'Iniciar Sesión' : 'Error: Reintentar?'}</button>
-         : 
-        <div type="submit" className={styles.loading}>
-          <Spinner name='circle' className={styles.loadingSpinner} />
-          <p className={styles.loadingText}>Cargando</p>
-        </div>}
+        <WithLoadingLoginButton hasError={hasError} isLoading={isLoading} type="button" />
       </form>
     );
   }

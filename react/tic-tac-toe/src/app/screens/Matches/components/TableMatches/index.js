@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-
-
-import { connect } from 'react-redux';
-import { arrayOf } from 'prop-types';
-
-import MatchesService from '../../../../../services/MatchesService';
-
 import styles from './styles.module.scss';
 
-var Spinner = require('react-spinkit');
 
 class TableMatches extends Component {
-  componentDidMount() {
-    const { dispatch } = this.props;
-    dispatch(MatchesService.getMatches());
-  }
+  
 
   renderMatch(match) {
     return (
@@ -26,47 +15,21 @@ class TableMatches extends Component {
     );
   }
 
-  renderLoading() {
-    return <Spinner className={styles.loading} name='double-bounce' />;
-  }
-
   render () {
     const { matches } = this.props
-    if (matches.length) {
-      return (
-        <div className={styles.matches}>
-          <div className={styles.tableTitle}>Historial de Partidas:</div>
-          <table className={styles.tableMatches}>
-            <tr>
-              <th className={styles.tableHeader}>Jugador Uno</th>
-              <th className={styles.tableHeader}>Jugador Dos</th>
-              <th className={styles.tableHeader}>Ganador</th> 
-            </tr>
-            {matches.map(this.renderMatch)}
-          </table>
-        </div>
-      );
-    } else {
-      return (
-        <div className={styles.matches}>
-          <div>Cargando Historial de Partidas... </div>  
-          {this.renderLoading()}
-        </div>
-        );
-    }
+    return (
+      <div className={styles.matches}>
+        <table className={styles.tableMatches}>
+          <tr>
+            <th className={styles.tableHeader}>Jugador Uno</th>
+            <th className={styles.tableHeader}>Jugador Dos</th>
+            <th className={styles.tableHeader}>Ganador</th> 
+          </tr>
+          {matches.map(this.renderMatch)}
+        </table>
+      </div>
+    );
   }
 }
 
-TableMatches.defaultProps = {
-  matches: []
-};
-
-TableMatches.propTypes = {
-  matches: arrayOf(Object),
-}
-
-const mapStateToProps = store => ({
-  matches: store.matches.matches,
-});
-
-export default connect(mapStateToProps)(TableMatches);
+export default TableMatches;

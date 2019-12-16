@@ -1,0 +1,37 @@
+.loading-button {
+    background-color: #00ADEE;
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.loading-button-spinner {
+    color: white;
+}
+
+.loading-button-text {
+    color: white;
+    font-size: 20px;
+}
+
+.loading-text {
+    width: 150px;
+    height: 50px;
+    align-self: center;
+    align-items: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    font-size: 20px;
+}
+
+.loading-text-spinner {
+    color: black;
+}
