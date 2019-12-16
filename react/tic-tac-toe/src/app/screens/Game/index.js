@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import MatchesService from '../../../services/MatchesService';
 import { t } from 'i18next';
 import { withTranslation } from 'react-i18next';
-import actionsCreators from '../../../redux/matches/actions';
-
-
 import styles from './styles.module.scss';
-
 import Board from './components/Board';
 import Topbar from '../../components/Topbar';
 import GameForm from './components/GameForm';
@@ -47,7 +44,7 @@ class Game extends Component {
     });
     if(winner || tie) {
       const theWinner = `${!winner ? 'tie' : winner ==='X' ? this.state.playerOne : this.state.playerTwo}`;
-      this.props.createMatch(
+      this.props.dispatch(MatchesService.createMatch(
         {
           player_one: this.state.playerOne,
           player_two: this.state.playerTwo,
@@ -55,7 +52,7 @@ class Game extends Component {
           createdAt: '',
           id: ''
         }
-      );
+      ));
     }
   }
 
@@ -92,7 +89,6 @@ class Game extends Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-
     const moves = history.map((step, move) => {
       const desc = move ? t('game.goToMoveMsg', {move: move}) : t('game.goToStartMsg');
       return (
@@ -131,11 +127,4 @@ class Game extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  createMatch: (match) => dispatch(actionsCreators.createMatch(match)),
-});
-
-export default withTranslation()(connect(
-  null,
-  mapDispatchToProps
-)(Game));
+export default withTranslation()(connect()(Game));

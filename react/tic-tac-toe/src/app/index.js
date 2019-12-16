@@ -33,9 +33,14 @@ class App extends Component{
   };
 }
 
+App.defaultProps = {
+  token: '',
+  loading: false
+};
+
 const mapStateToProps = store => ({
   userAuthenticated: store.login.userAuthenticated,
-  loading: store.login.loading,
+  loading: store.login.tokenLoading,
 })
 
 const mapDispatchToProps = dispatch => ({

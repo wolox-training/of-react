@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from '../Login/components/LoginForm';
 import { connect } from 'react-redux';
-import actionsCreators from '../../../redux/login/actions';
+import UsersService from '~services/UsersService';
 
 class Login extends Component {
   submit = (values) => this.props.checkCredentials(values);
@@ -17,13 +17,18 @@ class Login extends Component {
     }
 }
 
+Login.defaultProps = {
+  loading: false,
+  errorMessage: ''
+};
+
 const mapStateToProps = store => ({
-  loading: store.login.loading,
-  errorMessage: store.login.errorMessage
+  loading: store.login.tokenLoading,
+  errorMessage: store.login.tokenError
 })
 
 const mapDispatchToProps = dispatch => ({
-  checkCredentials: ({email, password}) => dispatch(actionsCreators.postUser(email,password)),
+  checkCredentials: (creds) => dispatch(UsersService.postUser(creds)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
