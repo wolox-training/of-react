@@ -8,7 +8,7 @@ import styles from './styles.module.scss';
 
 function Board({squares,onClick}){ 
     return (
-      <div>
+      <div className={styles.boardTotal}>
         <div className={styles.boardRow}>
           <Square
           value={squares[0]}
